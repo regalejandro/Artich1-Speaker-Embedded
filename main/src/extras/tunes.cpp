@@ -1,0 +1,42 @@
+
+#include "tunes.h"
+
+void play_note(uint32_t freq, uint8_t time, uint8_t pin) {
+  
+  uint32_t cycle = 1000000 / freq;
+
+  for (uint32_t i = 0; i < freq * 60/BPM * time/4; i++){
+    digitalWrite(pin, HIGH);
+    delayMicroseconds(cycle / 2);
+    digitalWrite(pin, LOW);
+    delayMicroseconds(cycle / 2);
+  }
+}
+
+void quiet(uint8_t time, uint8_t pin) {
+  uint32_t delay_us = 1000000 * 60/BPM * time/4;
+  uint32_t delay_ms = delay_us / 1000;
+  digitalWrite(pin, LOW);
+  delay(delay_ms);
+}
+
+void play_PvZ_theme(uint8_t pin) {
+    
+  play_note(554, 1, pin);
+  play_note(587, 1, pin);
+  play_note(554, 1, pin);
+  play_note(587, 1, pin);
+
+  play_note(466, 1, pin);
+  play_note(392, 1, pin);
+  quiet(2, pin);
+
+  play_note(466, 1, pin);
+  play_note(392, 1, pin);
+  quiet(2, pin);
+
+  play_note(587, 1, pin);
+  play_note(392, 1, pin);
+  quiet(2, pin);
+
+}
