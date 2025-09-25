@@ -1,3 +1,14 @@
+/*********************************************************
+ * File: tunes.cpp
+ * 
+ * Author:  Alejandro Regalado
+ * 
+ * Description: Functions to produce simple square wave
+ *              tunes.
+ *        
+ * Date Created: September 15, 2025
+ * 
+*********************************************************/
 
 #include "tunes.h"
 

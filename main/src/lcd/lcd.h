@@ -1,6 +1,14 @@
-
-
-
+/*********************************************************
+ * File: tunes.cpp
+ * 
+ * Author:  Alejandro Regalado
+ * 
+ * Description: Header file for lcd.cpp and pin 
+ * 				definitions
+ *        
+ * Date Created: September 22, 2025
+ * 
+*********************************************************/
 
 #ifndef LCD_H
 #define LCD_H
@@ -21,6 +29,7 @@
 #define DB6 41
 #define DB7 39
 
+extern LiquidCrystal lcd;
 
 
 #endif	// LCD_H

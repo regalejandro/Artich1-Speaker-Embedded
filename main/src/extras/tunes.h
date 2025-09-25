@@ -1,6 +1,13 @@
-
-
-
+/*********************************************************
+ * File: tunes.h
+ * 
+ * Author:  Alejandro Regalado
+ * 
+ * Description: Header file for tunes.cpp
+ *        
+ * Date Created: September 15, 2025
+ * 
+*********************************************************/
 
 #ifndef TUNES_H
 #define TUNES_H
