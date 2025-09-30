@@ -13,58 +13,18 @@
 
 LiquidCrystal lcd(RS, E, DB0, DB1, DB2, DB3, DB4, DB5, DB6, DB7);
 
-// FSM States
-enum class ConfigState {
-	LO,
-	MID,
-	HI
-};
+Button cButton(34);
+Button uButton(30);
+Button dButton(32);
 
-// Transition triggers
-enum class ConfigEvent {
-	UP,
-	DOWN
-};
 
-class ConfigNavFSM {
-public:
-	ConfigNavFSM() : currentState(ConfigState::LO) {}
+void ButtonsInit() {
+	cButton.begin();
+	uButton.begin();
+	dButton.begin();
+}
 
-	void handleEvent(ConfigEvent event) {
-		switch (currentState) {
-			case ConfigState::LO:
-				if (event == ConfigEvent::UP) {
-					currentState = ConfigState::MID;
-				}
-				break;
-		
-			case ConfigState::MID:
-				if (event == ConfigEvent::UP) {
-					currentState = ConfigState::HI;
-				}
-				else if (event == ConfigEvent::DOWN) {
-					currentState = ConfigState::LO;
-				}
-				break;
-		
-			case ConfigState::HI:
-				if (event == ConfigEvent::DOWN) {
-					currentState = ConfigState::MID;
-				}
-				break;
-		
-		}
-	}
-
-    ConfigState getCurrentState() const {
-        return currentState;
-    }
-
-private:
-	ConfigState currentState;
-};
-
-int ConfigNav() {
+void ConfigNav() {
 	ConfigNavFSM nav;
 	bool exit = false;
 
@@ -81,6 +41,19 @@ int ConfigNav() {
 	        lcd.clear();
 			lcd.print("TREBLE");
 	    }
+	    
+	    if (uButton.pressed()) {
+	    	nav.handleEvent(ConfigEvent::UP);
+	    }
+	    else if (dButton.pressed()) {
+	    	nav.handleEvent(ConfigEvent::DOWN);
+	    }
+	    
+	    else if (cButton.pressed()) {
+	    	exit = true;
+	    }
+
+	    delay(REFRESH_DELAY);
 	}
 }
 

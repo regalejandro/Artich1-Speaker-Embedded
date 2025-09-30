@@ -18,14 +18,22 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(TUNE_PIN, OUTPUT);
 
+  ButtonsInit();
   lcd.begin(16,1);
-  lcd.print("Hello, World!");
+  //lcd.print("Hello, World!");
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly: 
-  play_PvZ_theme(TUNE_PIN);
+  lcd.clear();
+  lcd.print("Playing Tunes");
+  if (cButton.pressed()) {
+    ConfigNav();
+  }
+  delay(REFRESH_DELAY);
+  
+  //play_PvZ_theme(TUNE_PIN);
 }
 
 
