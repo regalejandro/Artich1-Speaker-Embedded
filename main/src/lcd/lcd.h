@@ -18,16 +18,20 @@
 #include <Button.h>
 #include <LiquidCrystal.h>
 
-#define RS 52
-#define E 50
-#define DB0 53
-#define DB1 51
-#define DB2 49
-#define DB3 47
-#define DB4 45
-#define DB5 43
-#define DB6 41
-#define DB7 39
+#define RS 12
+#define E 13
+#define DB0 22
+#define DB1 24
+#define DB2 26
+#define DB3 28
+#define DB4 30
+#define DB5 32
+#define DB6 34
+#define DB7 36
+
+#define CBUTTON 27
+#define UBUTTON 25
+#define DBUTTON 23
 
 #define REFRESH_RATE 60	// Hz
 #define REFRESH_DELAY 1000 / REFRESH_RATE
@@ -93,3 +97,5 @@ void ConfigNav();
 
 
 #endif	// LCD_H
+
+
