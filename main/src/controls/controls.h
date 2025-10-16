@@ -22,17 +22,23 @@
 #define CBUTTON 27
 #define UBUTTON 25
 #define DBUTTON 23
+#define LBUTTON 31
+#define RBUTTON 29
 
 /* Globals */
 extern Button cButton;
 extern Button uButton;
 extern Button dButton;
+extern Button lButton;
+extern Button rButton;
 
 /* Enums */
 // Transition triggers
 enum class ConfigEvent {
 	UP,
-	DOWN
+	DOWN,
+	LEFT,
+	RIGHT
 };
 
 /* Prototypes */
