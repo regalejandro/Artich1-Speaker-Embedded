@@ -1,5 +1,5 @@
 /*********************************************************
- * File: tunes.cpp
+ * File: lcd.cpp
  * 
  * Author:  Alejandro Regalado
  * 
@@ -12,17 +12,6 @@
 #include "lcd.h"
 
 LiquidCrystal lcd(RS, E, DB0, DB1, DB2, DB3, DB4, DB5, DB6, DB7);
-
-Button cButton(CBUTTON);
-Button uButton(UBUTTON);
-Button dButton(DBUTTON);
-
-
-void ButtonsInit() {
-	cButton.begin();
-	uButton.begin();
-	dButton.begin();
-}
 
 void ConfigNav() {
 	ConfigNavFSM nav;

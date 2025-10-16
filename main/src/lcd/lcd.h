@@ -1,5 +1,5 @@
 /*********************************************************
- * File: tunes.cpp
+ * File: lcd.h
  * 
  * Author:  Alejandro Regalado
  * 
@@ -13,11 +13,17 @@
 #ifndef LCD_H
 #define LCD_H
 
+/* Includes */
 #include <Arduino.h>
 #include <stdint.h>
 #include <Button.h>
 #include <LiquidCrystal.h>
 
+// Project files
+#include "../controls/controls.h"
+
+/* Define Macros */
+// LCD Pins
 #define RS 12
 #define E 13
 #define DB0 22
@@ -29,18 +35,15 @@
 #define DB6 34
 #define DB7 36
 
-#define CBUTTON 27
-#define UBUTTON 25
-#define DBUTTON 23
-
+// LCD Refresh Rate
 #define REFRESH_RATE 60	// Hz
 #define REFRESH_DELAY 1000 / REFRESH_RATE
 
-extern LiquidCrystal lcd;
-extern Button cButton;
-extern Button uButton;
-extern Button dButton;
 
+/* Globals */
+extern LiquidCrystal lcd;
+
+/* Enums */
 // FSM States
 enum class ConfigState {
 	LO,
@@ -48,12 +51,8 @@ enum class ConfigState {
 	HI
 };
 
-// Transition triggers
-enum class ConfigEvent {
-	UP,
-	DOWN
-};
-
+/* Classes */
+// Handle Configuration Menu Navigation
 class ConfigNavFSM {
 public:
 	ConfigNavFSM() : currentState(ConfigState::MID) {}
@@ -92,7 +91,7 @@ private:
 	ConfigState currentState;
 };
 
-void ButtonsInit();
+/* Prototypes */
 void ConfigNav();
 
 

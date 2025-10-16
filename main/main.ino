@@ -21,6 +21,15 @@ void setup() {
   ButtonsInit();
   lcd.begin(16,1);
   //lcd.print("Hello, World!");
+  lcd.print("Pair Device");
+  digitalWrite(8, HIGH);
+  delay(1000);
+  digitalWrite(8, LOW);
+  lcd.setCursor(15, 1);
+  lcd.write("*");
+  delay(5000);
+  digitalWrite(8, HIGH);
+
 
 }
 
