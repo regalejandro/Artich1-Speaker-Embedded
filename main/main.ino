@@ -30,7 +30,6 @@ void setup() {
   delay(5000);
   digitalWrite(8, HIGH);
 
-
 }
 
 void loop() {

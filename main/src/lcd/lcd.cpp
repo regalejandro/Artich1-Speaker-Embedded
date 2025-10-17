@@ -32,10 +32,16 @@ void ConfigNav() {
 	    }
 	    
 	    if (uButton.pressed()) {
-	    	nav.handleEvent(ConfigEvent::UP);
+	    	nav.handleEvent(ButtonPress::UP);
 	    }
 	    else if (dButton.pressed()) {
-	    	nav.handleEvent(ConfigEvent::DOWN);
+	    	nav.handleEvent(ButtonPress::DOWN);
+	    }
+	    else if (lButton.pressed()) {
+	    	nav.changeValue(ButtonPress::LEFT);
+	    }
+	    else if (rButton.pressed()) {
+	    	nav.changeValue(ButtonPress::RIGHT);
 	    }
 	    
 	    else if (cButton.pressed()) {

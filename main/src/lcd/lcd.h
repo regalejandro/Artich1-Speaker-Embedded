@@ -21,6 +21,7 @@
 
 // Project files
 #include "../controls/controls.h"
+#include "../extras/settings.h"
 
 /* Define Macros */
 // LCD Pins
@@ -55,27 +56,29 @@ enum class ConfigState {
 // Handle Configuration Menu Navigation
 class ConfigNavFSM {
 public:
+
 	ConfigNavFSM() : currentState(ConfigState::MID) {}
 
-	void handleEvent(ConfigEvent event) {
+	// Handles switching between frequencies on LCD
+	void handleEvent(ButtonPress press) {
 		switch (currentState) {
 			case ConfigState::LO:
-				if (event == ConfigEvent::UP) {
+				if (press == ButtonPress::UP) {
 					currentState = ConfigState::MID;
 				}
 				break;
 		
 			case ConfigState::MID:
-				if (event == ConfigEvent::UP) {
+				if (press == ButtonPress::UP) {
 					currentState = ConfigState::HI;
 				}
-				else if (event == ConfigEvent::DOWN) {
+				else if (press == ButtonPress::DOWN) {
 					currentState = ConfigState::LO;
 				}
 				break;
 		
 			case ConfigState::HI:
-				if (event == ConfigEvent::DOWN) {
+				if (press == ButtonPress::DOWN) {
 					currentState = ConfigState::MID;
 				}
 				break;
@@ -83,12 +86,33 @@ public:
 		}
 	}
 
+	// Handles increasing or decreasing EQ levels
+	void changeValue(ButtonPress press) {
+
+		int8_t polar = (press == ButtonPress::RIGHT) ? 1 : -1;
+
+		if (currentState == ConfigState::LO) {
+			lo_level += (lo_level + polar <= 16 || lo_level + polar >= 1) ? polar : 0;
+		}
+		else if (currentState == ConfigState::MID) {
+			mid_level += (mid_level + polar <= 16 || mid_level + polar >= 1) ? polar : 0;
+		}
+		else if (currentState == ConfigState::HI) {
+			hi_level += (hi_level + polar <= 16 || hi_level + polar >= 1) ? polar : 0;;
+		}
+
+	}
+
     ConfigState getCurrentState() const {
         return currentState;
     }
 
 private:
+
 	ConfigState currentState;
+
+
+
 };
 
 /* Prototypes */

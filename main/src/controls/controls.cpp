@@ -16,6 +16,8 @@
 Button cButton(CBUTTON);
 Button uButton(UBUTTON);
 Button dButton(DBUTTON);
+Button lButton(UBUTTON);
+Button rButton(DBUTTON);
 
 // Initialize buttons
 void ButtonsInit() {

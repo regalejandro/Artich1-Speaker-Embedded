@@ -34,7 +34,7 @@ extern Button rButton;
 
 /* Enums */
 // Transition triggers
-enum class ConfigEvent {
+enum class ButtonPress {
 	UP,
 	DOWN,
 	LEFT,
