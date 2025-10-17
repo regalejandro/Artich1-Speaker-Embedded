@@ -37,7 +37,7 @@
 #define DB7 36
 
 // LCD Refresh Rate
-#define REFRESH_RATE 60	// Hz
+#define REFRESH_RATE 30	// Hz
 #define REFRESH_DELAY 1000 / REFRESH_RATE
 
 
@@ -116,7 +116,9 @@ private:
 };
 
 /* Prototypes */
+void LCDInit();
 void ConfigNav();
+void DisplayLevel(ConfigState state);
 
 
 #endif	// LCD_H

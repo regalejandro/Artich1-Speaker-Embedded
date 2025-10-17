@@ -18,17 +18,15 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(TUNE_PIN, OUTPUT);
 
+  LCDInit();
   ButtonsInit();
-  lcd.begin(16,1);
-  //lcd.print("Hello, World!");
-  lcd.print("Pair Device");
-  digitalWrite(8, HIGH);
+
+  lcd.print("Pairing Device");
   delay(1000);
-  digitalWrite(8, LOW);
   lcd.setCursor(15, 1);
   lcd.write("*");
   delay(5000);
-  digitalWrite(8, HIGH);
+
 
 }
 
