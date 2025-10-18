@@ -13,6 +13,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+/* Includes */
 #include <stdint.h>
 
 /* Globals */

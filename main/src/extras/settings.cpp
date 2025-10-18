@@ -11,6 +11,7 @@
 
 #include "settings.h"
 
+// EQ levels, default to 8 / 16
 uint8_t lo_level = 8;
 uint8_t mid_level = 8;
 uint8_t hi_level = 8;

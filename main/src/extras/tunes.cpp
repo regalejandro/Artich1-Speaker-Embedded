@@ -12,11 +12,18 @@
 
 #include "tunes.h"
 
+// Plays a note of a specified frequency for a specified amount of time in beats
 void play_note(uint32_t freq, uint8_t time, uint8_t pin) {
   
+  // Define the length of a cycle for the note in microseconds 
   uint32_t cycle = 1000000 / freq;
 
-  for (uint32_t i = 0; i < freq * 60/BPM * time/4; i++){
+  // Alternate output at note frequency
+  // freq * -> ensures the same runtime regardless of frequency
+  // 60/BPM -> ensure 1 sec per beat
+  // time/4 -> more iterations for higher value of time
+  for (uint32_t i = 0; i < freq * 60/BPM * time/4; i++) {
+    // Each iteration is one cycle
     digitalWrite(pin, HIGH);
     delayMicroseconds(cycle / 2);
     digitalWrite(pin, LOW);
@@ -24,6 +31,7 @@ void play_note(uint32_t freq, uint8_t time, uint8_t pin) {
   }
 }
 
+// Serves as a gap between notes for a specied amount of time in beats
 void quiet(uint8_t time, uint8_t pin) {
   uint32_t delay_us = 1000000 * 60/BPM * time/4;
   uint32_t delay_ms = delay_us / 1000;
@@ -31,6 +39,7 @@ void quiet(uint8_t time, uint8_t pin) {
   delay(delay_ms);
 }
 
+// Plays Plants Vs. Zombies Theme
 void play_PvZ_theme(uint8_t pin) {
     
   play_note(554, 1, pin);

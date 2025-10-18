@@ -89,8 +89,10 @@ public:
 	// Handles increasing or decreasing EQ levels
 	void changeValue(ButtonPress press) {
 
+		// Value to increase (right) or decrease (left) level by
 		int8_t polar = (press == ButtonPress::RIGHT) ? 1 : -1;
 
+		// Change value, keep between 1 and 16
 		if (currentState == ConfigState::LO) {
 			lo_level += (lo_level + polar <= 16 || lo_level + polar >= 1) ? polar : 0;
 		}
@@ -103,12 +105,14 @@ public:
 
 	}
 
+	// Return current state
     ConfigState getCurrentState() const {
         return currentState;
     }
 
 private:
 
+	// Current menu option (Low, Mid, High)
 	ConfigState currentState;
 
 
